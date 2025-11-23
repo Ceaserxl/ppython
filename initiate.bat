@@ -23,7 +23,6 @@ if /I "%~1"=="-x" (
 if "%WIPE%"=="1" (
     echo [*] Wipe mode enabled: resetting win-x64...
     if exist "%OUTDIR%" rmdir /s /q "%OUTDIR%"
-    echo.
 )
 
 REM ------------------------------------------
@@ -31,7 +30,6 @@ REM VALIDATE ARCHIVE
 REM ------------------------------------------
 if not exist "%ARCHIVE%" (
     echo [!] ERROR: Missing archive: %ARCHIVE%
-    pause
     exit /b 1
 )
 
@@ -44,7 +42,6 @@ if not exist "%PYPATH%" (
     powershell -NoLogo -NoProfile -Command ^
         "$ProgressPreference='SilentlyContinue'; Expand-Archive '%ARCHIVE%' '%OUTDIR%' -Force"
     echo [*] Extraction complete.
-    echo.
 )
 
 REM ------------------------------------------
@@ -53,13 +50,11 @@ REM ------------------------------------------
 if not exist "%PYPATH%" (
     echo [!] ERROR: python.exe not found at:
     echo     %PYPATH%
-    pause
     exit /b 1
 )
 
 echo [OK] Found python.exe:
 echo     %PYPATH%
-echo.
 
 REM ------------------------------------------
 REM CREATE VENV (only if missing)
@@ -72,11 +67,9 @@ if not exist "%VENV_PY%" (
 if not exist "%VENV_PY%" (
     echo [!] ERROR: Failed to create venv:
     echo     %VENV_DIR%
-    pause
     exit /b 1
 )
 
 echo [OK] Virtual environment ready.
-echo.
 echo [*] Initialization complete.
 exit /b 0
