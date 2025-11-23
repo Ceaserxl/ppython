@@ -2,11 +2,6 @@
 setlocal EnableDelayedExpansion
 pushd "%~dp0"
 
-echo ===========================================
-echo   Portable Python Initializer (Windows)
-echo ===========================================
-echo.
-
 REM ------------------------------------------
 REM CONFIG
 REM ------------------------------------------
